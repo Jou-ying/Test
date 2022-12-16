@@ -15,19 +15,11 @@ public class TestController : Controller
 
     public IActionResult Index2()
     {
-                // return "???";
-
         return Content("<html><body style='color:red'>test2</body></html>", "text/html");
-        //return View();
     }
 
      public IActionResult Index3()
     {
-                // return "???";
-
         return Content("<html><body style='color:red'>test3</body></html>", "text/html");
-        //return View();
     }
-
-
 }
