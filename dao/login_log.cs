@@ -5,4 +5,6 @@ public class login_log {
 
     public string id {get; set;}
     public string login_time {get; set;}
+
+    public string memo {get; set;}
 }

@@ -11,9 +11,9 @@ public class users: zoe {
         
         String sql = "select * from users";
         
-        connect2.Open();
-        List<dynamic> usersData = connect2.Query(sql).ToList();
-        connect2.Close();
+        connect.Open();
+        List<dynamic> usersData = connect.Query(sql).ToList();
+        connect.Close();
         return usersData;
     }
 
@@ -22,9 +22,9 @@ public class users: zoe {
     {        
 
         String sql = "select * from users";
-        connect2.Open();
-        List<user> usersData = connect2.Query<user>(sql).ToList();
-        connect2.Close();
+        connect.Open();
+        List<user> usersData = connect.Query<user>(sql).ToList();
+        connect.Close();
         return usersData;
     }
 

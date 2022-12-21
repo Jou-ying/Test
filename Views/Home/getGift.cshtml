@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center" style="font-size: 15pt;">
+    <h1 class="display-4">2022 耶誕交換禮物</h1>
+    <hr>
+    
+   
+
+    <br>
+    <br>
+    恭喜你抽中：@ViewBag.gift_id
+    
+    @{
+        if(ViewBag.type == "hell") {
+            <form method="post" action="~/home/setGarbage">  
+            <br><br><br><br><br>
+            垃圾指數：<input name="garbage" type="text" style="width:120px; height:30px" required="required" >
+            <input name="gift_id" type="hidden" value="@ViewBag.gift_id">
+            <input name="type" type="hidden" value="@ViewBag.type">
+            <input type="submit" value="送出">
+            </form>
+        }
+    }
+
+
+    <br>
+    <br>
+    @{
+        if (ViewBag.type == "heaven")
+        {
+            @:<input type="button" onclick="javascript:window.location.href='http://localhost:8080/home/@(ViewBag.type)'" value="繼續">
+        }
+    }
+    <br>
+    <br>
+    <br>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+
+</div>

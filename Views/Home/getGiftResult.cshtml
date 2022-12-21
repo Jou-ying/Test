@@ -1,0 +1,107 @@
+﻿@using test2.dao;
+@{
+    
+    ViewData["Title"] = "Home Page";    
+    List<gift> results_ori = (List<gift>)ViewBag.results;
+    
+    List<gift> results1 = (from g in results_ori
+                    where g.type == "heaven"
+                    orderby g.type, Convert.ToInt64(g.gift_id)
+                    select g).ToList();
+
+    List<gift> results2 = (from g in results_ori
+                    where g.type == "hell"
+                    orderby g.type, Convert.ToInt64(g.gift_id)
+                    select g).ToList();
+
+    //results.Sort(delegate(gift x, gift y)
+    //{
+    //    return x.type.CompareTo(y.type);
+    //});
+}
+
+<div class="text-center" style="font-size: 15pt;">
+    <h1 class="display-4">2022 耶誕交換禮物</h1>
+    <hr>
+    
+    <br>
+    <font style="font-size:24pt;">抽獎結果：</font>
+    <br><br>
+    <center>
+    @* <table>
+        <tr><td> *@
+    <table class="center" style="border:3px #FFD382 dashed;" cellpadding="10" border='1'>
+    <thead>
+        <tr>
+            <th style="width:100px">種類</th>
+            <th style="width:100px">編號</th>
+            <th style="width:100px">提供者</th>
+            <th style="width:100px">中獎人</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            for(int i = 0; i<results1.Count; i++) {
+                <tr>
+                    <td>@results1[i].type</td>
+                    <td align="center">@results1[i].gift_id</td>
+                    <td>@results1[i].owner</td>
+                    <td>@results1[i].winner</td>
+                </tr>
+            }
+        }
+    </tbody>
+    </table>
+    @* </td>
+
+    <td style="width:200px"></td>
+
+    <td> *@
+
+    <br><br><br>
+
+    <table class="center" style="border:3px #FFD382 dashed;" cellpadding="10" border='1'>
+    <thead>
+        <tr>
+            <th style="width:100px">種類</th>
+            <th style="width:100px">編號</th>
+            <th style="width:100px">提供者</th>
+            <th style="width:100px">中獎人</th>
+            <th style="width:120px">垃圾指數</th>
+            <th class="text-center" style="width:240px">懲罰項目</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            for(int i = 0; i<results2.Count; i++) {
+                @:<tr>
+                    @:<td>@results2[i].type</td>
+                    @:<td align="center">@results2[i].gift_id</td>
+                    @:<td>@results2[i].owner</td>
+                    @:<td>@results2[i].winner</td>
+                    @:<td align="center">@results2[i].garbage</td>
+                    @:<td align="center"><p id="p@(i)" style="display:none">@(results2[i].punish_name)</p>
+
+                            if (results2[i].punish_name != "")
+                            {
+                                @:<input id="b@(i)" type="button" onclick="javascript:document.getElementById('p@(i)').style.display='';document.getElementById('b@(i)').style.display='none';" value="???">
+                            }
+                        
+                    @:</td>
+                @:</tr>
+            }
+        }
+    </tbody>
+    </table>
+    @* </td></tr>
+    </table> *@
+    </center>
+
+
+    <br>
+    <br>
+    <br>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+
+</div>

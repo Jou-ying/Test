@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    List<string> owners = (List<string>)ViewBag.owners;
+    string a = "";
+}
+
+<div class="text-center" style="font-size: 15pt;">
+    <h1 class="display-4">2022 耶誕交換禮物</h1>
+    <hr>
+    
+    <form method="post" action="~/home/getGift">  
+
+    <br>
+    <br>
+    抽獎類別：
+    <select name="type" style="width:120px; height:30px">
+        <option>hell</option>
+    </select> 
+    <br>
+    <br>
+    <font style="color:white;">__</font>抽獎人：
+     <select name="winner" style="width:120px; height:30px">
+        @{
+            for(int i = 0; i<owners.Count; i++) {
+                @:<option>@owners[i]</option>
+            }    
+        }        
+    </select> 
+    @* <input name="winner" type="text" style="width:120px; height:30px" required="required" > *@
+    <br>
+    <br>
+    <input type="submit" value="送出">
+
+    </form>
+    
+
+
+    <br>
+    <br>
+    <br>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+
+</div>
